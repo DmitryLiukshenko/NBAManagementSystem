@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBAManagementSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        MinHeight="420" MinWidth="540"
+        Background="#808080">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -62,8 +64,45 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="3" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
@@ -71,14 +110,18 @@
         </Grid.RowDefinitions>
         <StackPanel x:Name="Head" Orientation="Horizontal" />
         <Border BorderThickness="0,0,0,1" BorderBrush="#6995c2">
+            <Grid>
         <StackPanel Orientation="Horizontal">            
             <Image Source="/logo.jpg" Height="{Binding ElementName=Head, Path=ActualHeight}"/>
-            <Label Content="NBA Manahement System" VerticalContentAlignment="Center"/>
-            <Label Content="Admin Login" VerticalContentAlignment="Center"/>
-        </StackPanel>
+            <Label Content="NBA Manahement System" VerticalContentAlignment="Center"/>              
+                </StackPanel>
+                <Label Content="Admin Login" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Button Content="Back" HorizontalAlignment="Right" Width="60" Height="25" Margin="0 0 20 0" Style="{DynamicResource ButtonCornerRadius}"/>
+            </Grid>
         </Border>
-        <Button Content="Back" HorizontalAlignment="Right" Width="60" Height="25" Margin="0 0 20 0" Style="{DynamicResource ButtonCornerRadius}"/>
-        <Grid Grid.Row="1">
+        
+        <Grid Grid.Row="1" 
+              Height="250" Width="600">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -91,6 +134,40 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                   Content="Users can login into the system using their jobnumber and password."
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+            <Label Grid.Row="1" Grid.Column="0"
+                   Content="Jobnumber:"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="2" Grid.Column="0"
+                   Content="Password"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <CheckBox Grid.Row="3" Grid.Column="1"
+                      Content="Remember me"
+                      HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Button Grid.Row="4" Grid.Column="1"
+                    Content="Login"
+                    Height="40" Width="90"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Button Grid.Row="4" Grid.Column="1"
+                    Content="Cancel"
+                    Height="40" Width="90"
+                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <TextBox Grid.Row="1" Grid.Column="1"
+                       Height="auto" Width="auto"
+                     BorderThickness="1" Margin="0 15"/>
+
+            <TextBox Grid.Row="2" Grid.Column="1"
+                       Height="auto" Width="auto"
+                     BorderThickness="1" Margin="0 15"/>
+
         </Grid>
         <Label Grid.Row="2" Content="The current season is 2016-2017, and the NBA already has a history of 71 years." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#6995c2" Foreground="White"/>
     </Grid>
