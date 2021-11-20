@@ -28,3 +28,5 @@ D:\GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\NBAManagem
 D:\GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\NBAManagementSystem.csproj.CoreCompileInputs.cache
 D:\GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\NBAManagementSystem.exe
 D:\GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\NBAManagementSystem.pdb
+D:\GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\ButtonStyle.baml
+D:\GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\App.baml
