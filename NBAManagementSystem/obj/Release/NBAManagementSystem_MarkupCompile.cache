@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-D:\#GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Debug\
+D:\#GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\obj\Release\
 NBAManagementSystem
 none
 false
-DEBUG;TRACE
+TRACE
 D:\#GitHub_Projects\NBAManagementSystem1\NBAManagementSystem\App.xaml
 21492763080
 
